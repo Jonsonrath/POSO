@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.adventskalenderr.AdventskalenderController">
+   <children>
+       <Button fx:id="gobackbutton" layoutX="8.0" layoutY="13.0" mnemonicParsing="false" onAction="#goBackButtonClicked" prefHeight="46.0" prefWidth="65.0" text="Zurück" />
+
+       <TilePane fx:id="container" hgap="8.0" prefColumns="6" vgap="8.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+         </children></TilePane>
+   </children>
+</AnchorPane>

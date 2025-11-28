@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.htl.mitarbeitergui.MitarbeiterController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="welcomeText" />
+   <Button id="SceneSwitchAusrechnenButton" mnemonicParsing="false" onAction="#switchScene" text="Zum Ausrechnen" />
+   <MenuButton fx:id="AbbrechnungstypDropdown" mnemonicParsing="false" text="Abbrechnungstyp" textAlignment="JUSTIFY">
+     <items>
+       <MenuItem mnemonicParsing="false" onAction="#onMenuButtonSelectGehalt" text="Gehalt" />
+       <MenuItem mnemonicParsing="false" onAction="#onMenuButtonSelectLohn" text="Lohn" />
+     </items>
+   </MenuButton>
+   <Label text="Name" />
+   <TextField fx:id="NameInput" disable="true" />
+   <Label text="Gehalt" />
+   <TextField fx:id="GehaltInput" disable="true" />
+   <Label text="Abrechnungsperiode" />
+   <TextField fx:id="AbrechnungsperiodeInput" disable="true" />
+   <Label text="Stundenlohn" />
+   <TextField fx:id="StundenlohnInput" disable="true" />
+   <Label text="Gearbeitete Stunden" />
+   <TextField id="GearbeiteteStundenInput" fx:id="GearbeiteteStundenInput" disable="true" />
+   <Button mnemonicParsing="false" text="Mitarbeiter Hinzufuegen" onAction="#addMitarbeiter"/>
+</VBox>
