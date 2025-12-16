@@ -9,17 +9,26 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLOutput;
+import java.time.LocalDate;
 import java.util.*;
+
+
 
 public class AdventskalenderController {
     @FXML
@@ -28,6 +37,9 @@ public class AdventskalenderController {
     private ObservableList<Button> tueren = FXCollections.observableArrayList();
     private Date heutigesdatum = new Date();
     private AdventskalenderChecker datechecker = new AdventskalenderChecker();
+    private static Boolean cheatMode = false; // static weil static methode benutzt wird
+
+    private Stage bildStage;
 
     private void setButtonBackgroundImage(Button btn, URL imageurl) {
         if (imageurl != null) {
@@ -106,22 +118,7 @@ public class AdventskalenderController {
             // don't set a per-button BackgroundImage here (it previously referenced an out-of-scope variable).
             // Buttons will get their translucent white background via updateButtonBackground(), and the container has the background image.
 
-            if(i % 6 == 1) {
-                setButtonBackgroundImage(btn, linus);
-            } else if (i % 6 == 2) {
-                setButtonBackgroundImage(btn, terry);
-            } else if (i % 6 == 3) {
-                setButtonBackgroundImage(btn, tuxxmassanta);
-            }else if(i % 6 == 4){
-                setButtonBackgroundImage(btn, gabexmassanta);
-            }else if(i % 6 == 5){
-                setButtonBackgroundImage(btn, gabexmas);
 
-            }else if(i % 6 == 0){
-                setButtonBackgroundImage(btn, gabesanta);
-            }else{
-                setButtonBackgroundImage(btn, null); // sonst geht kapputt weil null dann übergeben wird
-            }
 
 
 
@@ -150,8 +147,13 @@ public class AdventskalenderController {
 
         System.out.println("Button " + btn.getText() + " clicked!");
         System.out.println("Button Class = " + btn.getStyleClass());
+        System.out.println("Heutiges Datum: " + heutigesdatum.toString());
+        System.out.println("Heutiges Datum = " + heutigesdatum.getDate());
+
         int tuernummer = Integer.parseInt(btn.getText());
-        if(datechecker.gueltigesDatum(new Date(2025, 12, tuernummer), false)) {
+
+        if(datechecker.gueltigesDatum(new Date(2025, 12, tuernummer), cheatMode) == true) {
+            System.out.println("Gueltiges Datum, Tuere darf geoeffnet werden!");
 
             for (Button b : tueren) {
                 b.setVisible(false);
@@ -164,7 +166,15 @@ public class AdventskalenderController {
             gobackbutton.setMouseTransparent(false);
             gobackbutton.toFront();
 
+            showPicture(tuernummer);
+
+        }else{
+            System.out.println("Ungueltiges Datum, Tuere darf nicht geoeffnet werden!");
         }
+
+        /*if(datechecker.gueltigesDatum() || cheatMode == true){
+
+        }*/
 
     }
     @FXML
@@ -178,5 +188,50 @@ public class AdventskalenderController {
 
         gobackbutton.setMouseTransparent(true);
         gobackbutton.toBack();
+
+        if(bildStage != null){
+            bildStage.close();
+        }
+        else{
+            System.out.println("Bild Stage ist NULL!! Und kann nicht geschlossen werden!");
+        }
     }
+    public static void toggleCheatMode(){
+
+        cheatMode = !cheatMode;
+
+        System.out.println("Cheat Mode toggled! Cheat Mode is now: " + cheatMode);
+    }
+    public void showPicture(int tuernummer) {
+        Bilder bilder = Bilder.valueOf("t" + tuernummer);
+        String bildpfad = bilder.getPath();
+
+        URL bildurl = AdventskalenderApplication.class.getResource(bildpfad);
+        if (bildurl == null) {
+            System.out.println("Bild URL ist NULL für Pfad: " + bildpfad);
+            return;
+        }
+
+        Image img = new Image(bildurl.toExternalForm());
+
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    AdventskalenderApplication.class.getResource("bild.fxml")
+            );
+            Parent root = loader.load();
+
+            BildController controller = loader.getController();
+            controller.openPicture(img);
+
+            bildStage = new Stage();  // speichern fürs zumachen
+            bildStage.setTitle("Bild");
+            bildStage.setScene(new Scene(root));
+            bildStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

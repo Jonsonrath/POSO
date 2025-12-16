@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -21,7 +22,7 @@ public class AdventskalenderApplication extends Application {
 
 
             URL bgUrl = AdventskalenderApplication.class.getResource("/images/xmastux.jpg");
-            if (bgUrl == null) { //dann gibts die datei niht
+            if (bgUrl == null) { //dann gibts die datei nicht
                 System.out.println("Background image not found at /images/xmastux.jpg");
             } else {
                 //bild von der URL von oben machen
@@ -55,6 +56,13 @@ public class AdventskalenderApplication extends Application {
 
             stage.setScene(scene);
             stage.show();
+
+            scene.setOnKeyPressed(e ->{
+               if(e.getCode() == KeyCode.C){
+                   AdventskalenderController.toggleCheatMode();
+               }
+            });
+
         }
 
 
