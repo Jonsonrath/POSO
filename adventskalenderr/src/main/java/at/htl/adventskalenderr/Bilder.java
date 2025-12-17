@@ -10,9 +10,9 @@ public enum Bilder {
     t7("/images/christmas-cats.gif"),
     t8("/images/jumping-cat-christmas.gif"),
     t9("/images/terry-dancing.gif"),
-    t10("/images/placeholderimg.png"),
+    t10("/images/bunnychristmas.gif"),
     t11("/images/gabenewellxmas.jpg"),
-    t12("/images/placeholderimg.png"),
+    t12("/images/linusmerkelpose.jpg"),
     t13("/images/placeholderimg.png"),
     t14("/images/gabesantaselfmade.jpg"),
     t15("/images/placeholderimg.png"),
@@ -24,7 +24,7 @@ public enum Bilder {
     t21("/images/placeholderimg.png"),
     t22("/images/linux-linus.gif"),
     t23("/images/placeholderimg.png"),
-    t24("/images/placeholderimg.png");
+    t24("/images/evilfloatingpointmagic.png");
 
     private final String path;
 
