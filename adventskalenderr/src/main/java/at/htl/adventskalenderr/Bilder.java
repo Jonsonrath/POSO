@@ -13,17 +13,17 @@ public enum Bilder {
     t10("/images/bunnychristmas.gif"),
     t11("/images/gabenewellxmas.jpg"),
     t12("/images/linusmerkelpose.jpg"),
-    t13("/images/placeholderimg.png"),
+    t13("/images/Pasted_image.png"),
     t14("/images/gabesantaselfmade.jpg"),
-    t15("/images/placeholderimg.png"),
+    t15("/images/nixosspinning.gif"),
     t16("/images/linustorvalds.jpg"),
-    t17("/images/placeholderimg.png"),
+    t17("/images/xmaspingu.jpg"),
     t18("/images/tux-merry-christmas.gif"),
     t19("/images/terrydaviscover.jpg"),
-    t20("/images/placeholderimg.png"),
-    t21("/images/placeholderimg.png"),
+    t20("/images/djoetzi.jpg"),
+    t21("/images/linus-nvidia.gif"),
     t22("/images/linux-linus.gif"),
-    t23("/images/placeholderimg.png"),
+    t23("/images/seal-seal-christmas.gif"),
     t24("/images/evilfloatingpointmagic.png");
 
     private final String path;
