@@ -40,19 +40,18 @@ public class AdventskalenderController {
         gobackbutton.setDisable(true);
         gobackbutton.setVisible(false);
 
-        // TilePane properties
         container.setTileAlignment(Pos.CENTER);
         container.setPrefColumns(6);
         container.setPadding(new Insets(12));
 
-        // Initialize doors
+        // einmal initialisieren
         refreshDoors();
 
-        // Add key listener to the scene once it's ready
+        // Key listener für C --> Cheatmode
         container.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.setOnKeyPressed(event -> {
-                    // Only refresh on lowercase 'c'
+
                     if ("c".equals(event.getText())) {
                         refreshDoors();
                     }
@@ -98,7 +97,7 @@ public class AdventskalenderController {
             btn.prefHeightProperty().bind(tileHeight);
             btn.getStyleClass().add("calendar-button");
 
-            // Future doors disabled
+            // Türchen die über dem tag sind deaktivieren
             if (i > tag) btn.setDisable(true);
 
             btn.setOnAction(e -> buttonClicked(btn));
@@ -111,12 +110,12 @@ public class AdventskalenderController {
     private void buttonClicked(Button btn) {
         int tuernummer = Integer.parseInt(btn.getText());
 
-        // Convert LocalDate to java.util.Date for the checker
+        // Localdate zu normalen Date umwandeln weil Checker mit Date arbeitet
         LocalDate tuerDatum = LocalDate.of(2025, 12, tuernummer);
         Date date = Date.from(tuerDatum.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
         if (datechecker.gueltigesDatum(date, cheatMode)) {
-            // Hide all doors
+            // Alle türen verstecken
             tueren.forEach(b -> {
                 b.setVisible(false);
                 b.setDisable(true);

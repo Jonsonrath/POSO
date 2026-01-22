@@ -24,13 +24,12 @@ public class AdventskalenderApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(AdventskalenderApplication.class.getResource("Adventskalender-view.fxml"));
         Parent root = fxmlLoader.load();
 
-        // Get controller instance
+        // Controller Instanz holen
         AdventskalenderController controller = fxmlLoader.getController();
 
         Scene scene = new Scene(root, 1280, 640);
         stage.setTitle("Adventskalender!");
 
-        // Set background image
         URL bgUrl = AdventskalenderApplication.class.getResource("/images/xmastux.jpg");
         if (bgUrl != null && root instanceof Region) {
             Image img = new Image(bgUrl.toExternalForm());
@@ -48,7 +47,7 @@ public class AdventskalenderApplication extends Application {
             System.out.println("Root node is not a Region; cannot set background image.");
         }
 
-        // Add CSS
+        // CSS hinzufügen
         URL cssUrl = AdventskalenderApplication.class.getResource("style.css");
         if (cssUrl != null) {
             scene.getStylesheets().add(cssUrl.toExternalForm());
@@ -61,11 +60,11 @@ public class AdventskalenderApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
-        // Key listener: toggle cheat mode and refresh doors
+        // Key listener für c ---> Cheatmode
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.C) {
-                controller.toggleCheatMode(); // instance method
-                controller.refreshDoors();    // instance method
+                controller.toggleCheatMode(); // Instanz Methode aufrufen weil wenn Static dann gehts nicht weil controller variablen nicht static sind
+                controller.refreshDoors();
             }
         });
     }
