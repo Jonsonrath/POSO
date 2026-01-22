@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.ubungsbeispieltest.IpAdressController">
+    <GridPane hgap="10" vgap="10">
+
+
+
+        <Label text="Ip Address" fx:id="IpAdressLabel"/>
+        <TextField GridPane.columnIndex="1" fx:id="IpAdressInput"/>
+
+        <Label text="Hersteller" GridPane.columnIndex="0" GridPane.RowIndex="1" fx:id="HerstellerLabel"></Label>
+        <TextField GridPane.columnIndex="1" GridPane.RowIndex="1" fx:id="HerstellerInput"></TextField>
+
+        <Label text="Anzahl Ports (nur router)" GridPane.columnIndex="0" GridPane.RowIndex="2" fx:id="AnzahlPortsLabel"></Label>
+        <TextField GridPane.columnIndex="1" GridPane.RowIndex="2" fx:id="AnzahlPortsInput"></TextField>
+
+        <Label text="Managed (nur switch)" GridPane.columnIndex="0" GridPane.rowIndex="3" fx:id="ManagedLabel"></Label>
+        <CheckBox GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="ManagedCheckBox"></CheckBox>
+
+        <Button GridPane.rowIndex="4" GridPane.columnIndex="1" text="Gerät Hinzufuegen" fx:id="AddBtn" onAction="#AddBtnAction"></Button>
+        <Button GridPane.rowIndex="4" GridPane.columnIndex="2" text="Sortieren nach Ip Adresse" fx:id="SortIpBtn" onAction="#SortIpBtnAction"></Button>
+        <Button GridPane.rowIndex="4" GridPane.columnIndex="3" text="Eingabefelder Leeren" fx:id="EmptyFieldsBtn" onAction="#EmptyFieldsBtnAction"></Button>
+
+        <ListView GridPane.rowIndex="7" GridPane.columnIndex="0" fx:id="ListView" minWidth="400"></ListView>
+
+    </GridPane>
+
+
+
+
+</VBox>
