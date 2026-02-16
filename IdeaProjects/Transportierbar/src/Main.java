@@ -1,5 +1,3 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
 
     Tisch myTisch = new Tisch("Tisch-01", false, 20.5f, 1.5f, 0.8f, 0.75f);
