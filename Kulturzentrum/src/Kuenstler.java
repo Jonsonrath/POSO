@@ -1,4 +1,4 @@
-public abstract class Kuenstler {
+public abstract class Kuenstler implements Comparable<Kuenstler>{
 	protected String _name;
 	protected int _alter;
 	protected String _typ;
@@ -24,6 +24,10 @@ public abstract class Kuenstler {
 	}
 	public String getBeschreibung(){
 		return _name + _alter;
+	}
+	
+	public int compareTo(Kuenstler kuenstler){
+		return _name.compareTo(kuenstler._name);
 	}
 	
 	

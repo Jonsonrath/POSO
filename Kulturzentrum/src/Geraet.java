@@ -1,4 +1,4 @@
-public abstract class Geraet {
+public abstract class Geraet implements Comparable<Geraet>{
 	
 	protected String _inventarnummer;
 	protected double _gewicht;
@@ -33,5 +33,11 @@ public abstract class Geraet {
 		_inventarnummer = inventarnummer;
 	}
 	
+	public int compareTo(Geraet geraet){
+		int gewichtT = (int)_gewicht * 100;
+		int gewichtO = (int)geraet.getGewicht() * 100;
+		
+		return gewichtT - gewichtO;
+	}
 	
 }

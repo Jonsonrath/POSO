@@ -57,4 +57,7 @@ public class Musiker extends Kuenstler implements IReservierbar, IBewertbar {
 		durchschnitt /= _bewertungen.size();
 		return durchschnitt;
 	}
+	public List<Integer> getBewertungen() {
+		return _bewertungen;
+	}
 }
